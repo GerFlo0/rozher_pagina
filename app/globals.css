@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter/wght.css";
+
+/*
+  ROZHER SEGUROS — Design tokens
+  Estilo inspirado en banca institucional (Grupo Financiero Inbursa como
+  referencia de dirección visual): azul marino profundo, acento azul brillante,
+  tipografía Inter, fondo blanco y mucho espacio. Marca y contenido son de
+  Rozher; ningún activo oficial de terceros se usa. Todo valor de marca está
+  centralizado aquí para reemplazarse sin tocar componentes.
+*/
+@theme {
+  --color-primary: #002A5C;
+  --color-primary-dark: #001B3D;
+  --color-primary-soft: #E8EEF5;
+
+  --color-accent: #0096D6;
+  --color-accent-dark: #007AB0;
+
+  --color-ink: #12233B;
+  --color-ink-soft: #4C5C70;
+  --color-paper: #F4F7FA;
+  --color-white: #FFFFFF;
+  --color-border: #E1E7EE;
+
+  --color-whatsapp: #25D366;
+  --color-whatsapp-dark: #1DA851;
+
+  --color-pending: #B5451B;
+  --color-pending-bg: #FBEAE3;
+
+  --font-display: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+
+  --shadow-card: 0 1px 2px rgba(18, 35, 59, 0.04), 0 10px 30px -18px rgba(18, 35, 59, 0.25);
+  --shadow-card-hover: 0 4px 12px rgba(18, 35, 59, 0.08), 0 18px 40px -20px rgba(18, 35, 59, 0.35);
+}
+
+/*
+  Estilos base en @layer base: así las utilidades de Tailwind (text-white,
+  text-primary, etc.) siempre ganan a estas reglas de elemento. Escribirlas
+  sin capa rompería los colores de enlaces y botones.
+*/
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem; /* 17px: legibilidad para público objetivo (pensionados) */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
